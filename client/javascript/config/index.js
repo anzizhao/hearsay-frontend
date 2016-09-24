@@ -1,6 +1,10 @@
-var apiUrl = process.env.CLOUD ?
-    'http://' + process.env.CLIENT_DOMAIN + process.env.CLIENT_API_PATH :
-    'http://' + process.env.CLIENT_DOMAIN + ':' + process.env.PORT + process.env.CLIENT_API_PATH;
+var apiUrl  
+if( process.env.CLOUD || process.env.NOT_SHOW_PORT ) {
+    apiUrl = 'http://' + process.env.CLIENT_DOMAIN + process.env.CLIENT_API_PATH ;
+} else {
+    apiUrl = 'http://' + process.env.CLIENT_DOMAIN + ':' + process.env.PORT + process.env.CLIENT_API_PATH;
+}
+
 
 exports = module.exports = {
     environment: process.env.NODE_ENV,

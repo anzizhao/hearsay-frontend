@@ -9,8 +9,16 @@ exports = module.exports = function (Entry, helpers) {
                 callback(err, entry);
             });
         } else {
-            var perPage = body.perPage || 5;
-            var page = body.page || 0;
+            var perPage =  5;
+            if( body.perPage ) {
+                perPage = parseInt(body.perPage) 
+            }
+
+            var page = 0;
+            if( body.page ) {
+                page = parseInt(body.page );
+            }
+
             if (page < 0) page = 0;
 
             var query = body.category ?

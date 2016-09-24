@@ -68,7 +68,7 @@
     "develop": "sh dev.sh",
     "postinstall": "npm run build",
     "build": "gulp build",
-    "start": "node app.js"
+    "start": "/usr/local/share/node-v0.10.36-linux-x64/bin/node   app.js"
   },
   "author": "Eirik Vullum <eirik@evconsult.no>"
 }

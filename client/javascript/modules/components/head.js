@@ -49,11 +49,11 @@ module.exports = React.createClass({
                 <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
                 <meta name="mobile-web-app-capable" content="yes" />
 
-                <link href='/stylesheets/merriweather.css' rel='stylesheet' type='text/css' />
-                <link href='/stylesheets/lato.css' rel='stylesheet' type='text/css' />
+                <link href='/othercss/merriweather.css' rel='stylesheet' type='text/css' />
+                <link href='/othercss/lato.css' rel='stylesheet' type='text/css' />
+                <link rel='stylesheet' href='/othercss/bootstrap.min.css' />
+                <link rel='stylesheet' href='/othercss/font-awesome.min.css' />
 
-                <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
-                <link rel='stylesheet' href='/stylesheets/font-awesome.min.css' />
                 <link rel='stylesheet' href='/stylesheets/theme.css' />
                 <link rel='stylesheet' href='/stylesheets/app.css' />
                 

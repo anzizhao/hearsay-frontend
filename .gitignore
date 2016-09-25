@@ -35,3 +35,5 @@ client/public/stylesheets/*
 
 # development scripts
 *.sh
+
+nohup.out

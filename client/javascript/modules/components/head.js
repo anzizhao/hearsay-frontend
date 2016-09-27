@@ -24,8 +24,8 @@ module.exports = React.createClass({
                 <title>{title}</title>
 
                 <meta name='description' content={description} />
-                <meta name='viewport' content='width=device-width, initial-scale=1' />
-
+                <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
                 <meta property='og:title' content={title} />
                 <meta property='og:description' content={description} />
                 <meta property='og:type' content='website' />

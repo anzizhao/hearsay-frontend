@@ -60,6 +60,22 @@ var categoryTree = [
         value: 'blogs',
         children: [
             {
+                display: '阮一峰',
+                value: 'ruanyifeng'
+            },
+            {
+                display: '天镶',
+                value: 'tianyu'
+            },
+            {
+                display: 'jerryQu',
+                value: 'jerryQu'
+            },
+            {
+                display: '十年踪迹',
+                value: 'shinianzongji'
+            },
+            {
                 display: 'Coding Horror (Jeff Atwood)',
                 value: 'codinghorror'
             },

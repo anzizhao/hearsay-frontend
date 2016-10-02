@@ -68,8 +68,6 @@ module.exports = React.createClass({
     },
 
     getLoaderElement: function () {
-        return null;
-
         return (
             <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
                 <div className='thumbnail article text-center'>Loading <i className='fa fa-cog fa-spin'></i></div>
@@ -78,14 +76,18 @@ module.exports = React.createClass({
     },
 
     getArticlesToRender: function () {
-        return this.state.articles.map(function (article) {
-            return (
-                <Article
-                    key={article.guid}
-                    article={article}
-                />
-            );
-        });
+        if(! this.state.articles ) {
+            return  
+        } else {
+            return this.state.articles.map(function (article) {
+                return (
+                    <Article
+                        key={article.guid}
+                        article={article}
+                    />
+                );
+            });
+        }
     },
 
     render: function () {

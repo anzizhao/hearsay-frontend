@@ -19,6 +19,11 @@ var Head = require('./modules/components/head');
 var Header = require('./modules/components/header');
 var ExternalScripts = require('./modules/components/external-scripts');
 
+
+var storeSelect = require('./utils').storeSelect;
+
+
+
 // Main page component (this is asyncronous)
 var App = React.createClass({
     displayName: 'MainApp',
@@ -29,8 +34,21 @@ var App = React.createClass({
         callback(null, this.props); // set the input props as state (equal to 'return this.props' in getInitialState, but async)
     },
 
+    componentDidMount: function(){
+        var defaultSel = storeSelect() 
+        if( defaultSel )  {
+            var category = defaultSel.value;
+            this.setState({ 
+                category: category,
+            });
+        }
+        this.setState({ 
+            showArticleBox: true,
+        });
+    },
+
     changeCategory: function (category) {
-        this.setState({ category: category });
+        this.setState({ 'category': category });
     },
 
     // main rendering function (uses the state of the component, not the props)
@@ -48,6 +66,7 @@ var App = React.createClass({
         );
     }
 });
+
 
 module.exports = App;
 

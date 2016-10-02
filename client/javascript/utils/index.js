@@ -7,6 +7,11 @@ function store (namespace, data) {
     return (store && JSON.parse(store)) || null;
 }
 
+function storeSelect (data) {
+    return store('storeSelect', data )
+}
+
 module.exports = {
     store: store,
+    storeSelect: storeSelect,
 }

@@ -6,24 +6,22 @@ var React = require('react');
 
 var Option = require('./option');
 
-var store = require('../../utils').store
+var storeSelect = require('../../utils').storeSelect
 
-function storeSelect (data) {
-    return store('storeSelect', data )
-}
 
 module.exports = React.createClass({
     displayName: 'CategorySelecter',
+
+    shouldComponentUpdate: function () {
+        return false;
+    },
 
     componentDidMount: function(){
         var defaultSel = storeSelect() 
         if( defaultSel )  {
             var elem =  this.refs.select.getDOMNode()
-            elem.selectedIndex = defaultSel
+            elem.selectedIndex = defaultSel.index
         }
-    },
-    shouldComponentUpdate: function () {
-        return false;
     },
 
     getOptionsToRender: function () {
@@ -37,7 +35,15 @@ module.exports = React.createClass({
     handleChange: function (event) {
         var selElem = event.target
         this.props.changeCategory( selElem.value);
-        storeSelect( selElem.selectedIndex )
+        // 存储后  会增加无限滚动的bug出现的几率
+        // 退出执行
+        setTimeout(function(){
+            storeSelect({ 
+                index:  selElem.selectedIndex ,
+                value: selElem.value
+            });
+        }, 500)
+
     },
 
     render: function () {
@@ -58,3 +64,4 @@ module.exports = React.createClass({
         );
     }
 });
+

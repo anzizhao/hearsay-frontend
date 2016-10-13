@@ -56,6 +56,16 @@ var categoryTree = [
         ]
     },
     {
+        display: 'Frontend',
+        value: 'frontend',
+        children: [
+            {
+                display: '稀金前端',
+                value: 'xitu'
+            }
+        ]
+    },
+    {
         display: 'Blogs',
         value: 'blogs',
         children: [

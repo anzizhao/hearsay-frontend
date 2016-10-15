@@ -43,6 +43,17 @@ module.exports = React.createClass({
         return source ? <p className='source'>{source}</p> : null;
     },
 
+    getCreatedDate : function () {
+        var date = ( new Date ( this.props.article.createdAt )).toLocaleDateString(); 
+        if ( date ) {
+            return (
+                <div style={{float:'right'}}>
+                    <time className="createdAt-date"> { date } </time>
+                </div> 
+            )
+        }
+    },
+
     getArticleLink: function () {
         return this.props.article.content ? '/article/' + encodeURIComponent(this.props.article.url) : this.props.article.url;
     },
@@ -52,10 +63,11 @@ module.exports = React.createClass({
             <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <a href={this.getArticleLink()} className='thumbnail article'>
                     {this.getImageElement()}
-                    <div className='caption'>
+                    <div className='caption caption-box'>
                         {this.getTitle()}
                         {this.getDescription()}
                         {this.getSource()}
+                        {this.getCreatedDate()}
                     </div>
                 </a>
             </div>

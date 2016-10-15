@@ -20,6 +20,7 @@ var masonryOptions = {};
 
 // sub-components
 var Article = require('./article');
+var goTop = require('../../utils').goTop;
 
 module.exports = React.createClass({
     displayName: 'ArticleBox',
@@ -75,6 +76,10 @@ module.exports = React.createClass({
         );
     },
 
+    wrapGoTop: function (e){
+        goTop(0.5, 20); 
+    },
+
     getArticlesToRender: function () {
         if(! this.state.articles ) {
             return  
@@ -114,6 +119,9 @@ module.exports = React.createClass({
                             {this.getArticlesToRender()}
                         </InfiniteScroll>
                     </div>
+                </div>
+                <div className='topButton' onClick={ this.wrapGoTop.bind(this) } >
+                    <i className="fa fa-angle-double-up fa-3x"  aria-hidden="true"></i>
                 </div>
             </div>
         );

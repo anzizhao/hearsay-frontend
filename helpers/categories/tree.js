@@ -7,10 +7,11 @@ var categoryTree = [
         display: 'Technology',
         value: 'technology',
         children: [
-            {
-                display: 'TechCrunch',
-                value: 'techcrunch'
-            },
+            // 国外的最大的rss 网站
+            //{
+                //display: 'TechCrunch',
+                //value: 'techcrunch'
+            //},
             {
                 display: 'Hacker News',
                 value: 'hackernews'

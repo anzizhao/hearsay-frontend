@@ -35,28 +35,6 @@ var categoryTree = [
         ]
     },
     {
-        display: 'Career',
-        value: 'career',
-        children: [
-            {
-                display: 'The Muse',
-                value: 'themuse'
-            },
-            {
-                display: 'Inc.com',
-                value: 'inc'
-            },
-            {
-                display: 'Entrepreneur.com',
-                value: 'entrepreneur'
-            },
-            {
-                display: 'KQED MindShift',
-                value: 'mindshift'
-            }
-        ]
-    },
-    {
         display: 'Frontend',
         value: 'frontend',
         children: [
@@ -66,6 +44,17 @@ var categoryTree = [
             }
         ]
     },
+    {
+        display: 'nodejs',
+        value: 'node',
+        children: [
+            {
+                display: 'node weekly',
+                value: 'nodeweekly'
+            }
+        ]
+    },
+
     {
         display: 'Blogs',
         value: 'blogs',
@@ -99,7 +88,29 @@ var categoryTree = [
                 value: 'smashingmagazine'
             }
         ]
-    }
+    },
+    {
+        display: 'Career',
+        value: 'career',
+        children: [
+            {
+                display: 'The Muse',
+                value: 'themuse'
+            },
+            {
+                display: 'Inc.com',
+                value: 'inc'
+            },
+            {
+                display: 'Entrepreneur.com',
+                value: 'entrepreneur'
+            },
+            {
+                display: 'KQED MindShift',
+                value: 'mindshift'
+            }
+        ]
+    },
 ];
 
 function createIndents (inputArray, outputArray, level) {

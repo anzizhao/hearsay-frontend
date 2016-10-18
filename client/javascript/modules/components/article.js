@@ -29,7 +29,13 @@ module.exports = React.createClass({
 
     getTitle: function ()  {
         return (
-            <h3 className='article-header'>{this.props.article.title}</h3>
+            <h3 className='article-header'>
+                {this.props.article.title}
+                <span className="article-source-read">
+                    <i className="fa fa-check-circle" aria-hidden="true"></i>
+                    已阅 
+                </span>
+            </h3>
         );
     },
 
@@ -44,9 +50,6 @@ module.exports = React.createClass({
             (
                 <p className='source'>
                     {source}
-                    <span>
-                    
-                    </span>
                 </p> 
             )  
             : null;

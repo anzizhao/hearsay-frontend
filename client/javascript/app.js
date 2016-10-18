@@ -21,7 +21,6 @@ var ExternalScripts = require('./modules/components/external-scripts');
 
 
 var storeSelect = require('./utils').storeSelect;
-var objectAssign = require('object-assign');
 
 
 // Main page component (this is asyncronous)

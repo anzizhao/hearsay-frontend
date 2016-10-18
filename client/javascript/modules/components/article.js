@@ -40,7 +40,16 @@ module.exports = React.createClass({
 
     getSource: function () {
         var source = helpers.parseSource(this.props.article.url);
-        return source ? <p className='source'>{source}</p> : null;
+        return source ?
+            (
+                <p className='source'>
+                    {source}
+                    <span>
+                    
+                    </span>
+                </p> 
+            )  
+            : null;
     },
 
     getCreatedDate : function () {

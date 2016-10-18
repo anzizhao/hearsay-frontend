@@ -27,14 +27,20 @@ module.exports = React.createClass({
 
     mixins: [ReactAsync.Mixin, MasonryMixin('masonryContainer', masonryOptions)],
 
+    lastPage: -1,
+    afterDidMount: false,
     componentWillReceiveProps: function (nextProps) {
         if (nextProps.category !== this.props.category) {
+            this.lastPage = -1;
             this.setState({
                 page: 0,
                 articles: [],
                 hasMore: true
             });
         }
+    },
+    componentDidMount: function(){
+        this.afterDidMount = true;
     },
 
     fetchNextArticles: function (page, perPage, callback) {
@@ -62,6 +68,10 @@ module.exports = React.createClass({
     },
 
     loadMoreArticles: function (page) {
+        if(! this.afterDidMount ||  this.lastPage >= page ) {
+            return  
+        }
+        this.lastPage = page;
         this.fetchNextArticles(page, this.props.perPage, function (err, articles) {
             if (err) return console.log(err);
             this.includeLoadedArticles(page, articles);

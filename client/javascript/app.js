@@ -21,7 +21,7 @@ var ExternalScripts = require('./modules/components/external-scripts');
 
 
 var storeSelect = require('./utils').storeSelect;
-
+var objectAssign = require('object-assign');
 
 
 // Main page component (this is asyncronous)
@@ -42,10 +42,8 @@ var App = React.createClass({
                 category: category,
             });
         }
-        this.setState({ 
-            showArticleBox: true,
-        });
     },
+
 
     changeCategory: function (category) {
         this.setState({ 'category': category });

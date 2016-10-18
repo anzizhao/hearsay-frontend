@@ -15,8 +15,8 @@ exports = module.exports = function (services, helpers) {
             function (article, callback) {
                 var context = {
                     article: article,
-                    title: 'anNews',
-                    description: 'the news that an conern about'
+                    title: 'an news',
+                    description: 'the news that anzi conern about'
                 };
 
                 helpers.react.renderMarkupToString({

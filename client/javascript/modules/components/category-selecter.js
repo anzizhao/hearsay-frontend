@@ -11,7 +11,7 @@ var storeSelect = require('../../utils').storeSelect
 
 module.exports = React.createClass({
     displayName: 'CategorySelecter',
-
+    afterDidMount: false,
     shouldComponentUpdate: function () {
         return false;
     },
@@ -22,6 +22,8 @@ module.exports = React.createClass({
             var elem =  this.refs.select.getDOMNode()
             elem.selectedIndex = defaultSel.index
         }
+        this.afterDidMount = true;
+        //this.setState({ afterDidMount: true});
     },
 
     getOptionsToRender: function () {
@@ -33,6 +35,9 @@ module.exports = React.createClass({
     },
 
     handleChange: function (event) {
+        if( ! this.afterDidMount ) {
+            return  
+        }
         var selElem = event.target
         this.props.changeCategory( selElem.value);
         // 存储后  会增加无限滚动的bug出现的几率

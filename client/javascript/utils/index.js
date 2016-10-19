@@ -47,6 +47,25 @@ function goTop(acceleration, time) {
         }, time);
     }
 }
+// 没有参数的 返回list
+// id  返回某项的值 
+// id value  设置某个项
+function storeRead (id, value) {
+    var storeKey = 'storeRead'
+    var list = store( storeKey ) || {};
+    
+    if(typeof id === 'undefined' ) {
+        return list  
+    }
+    if( typeof value  === 'undefined' ) {
+        // get id item 
+        return list[id] 
+    } else {
+        // set id item  
+        list[id] = value
+        return store( storeKey, list)
+    }
+}
 
 
 
@@ -54,4 +73,5 @@ module.exports = {
     store: store,
     storeSelect: storeSelect,
     goTop: goTop,
+    storeRead: storeRead,
 }

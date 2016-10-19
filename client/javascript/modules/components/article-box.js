@@ -20,7 +20,10 @@ var masonryOptions = {};
 
 // sub-components
 var Article = require('./article');
+
 var goTop = require('../../utils').goTop;
+
+var storeRead = require('../../utils').storeRead;
 
 module.exports = React.createClass({
     displayName: 'ArticleBox',
@@ -29,6 +32,8 @@ module.exports = React.createClass({
 
     lastPage: -1,
     afterDidMount: false,
+    readedSet: {},
+
     componentWillReceiveProps: function (nextProps) {
         if (nextProps.category !== this.props.category) {
             this.lastPage = -1;
@@ -41,6 +46,7 @@ module.exports = React.createClass({
     },
     componentDidMount: function(){
         this.afterDidMount = true;
+        this.readedSet = storeRead()
     },
 
     fetchNextArticles: function (page, perPage, callback) {
@@ -72,9 +78,16 @@ module.exports = React.createClass({
             return  
         }
         this.lastPage = page;
+        var mv = this;
         this.fetchNextArticles(page, this.props.perPage, function (err, articles) {
             if (err) return console.log(err);
-            this.includeLoadedArticles(page, articles);
+            //TODO  获取新的文章列表  比较本地阅读的 将已经阅读的 标记出来
+            var signReadArticles = articles.map(function(item){
+                item.read =  mv.readedSet[item.guid] || false;
+                return item ;
+            }) 
+            this.includeLoadedArticles(page, signReadArticles );
+
         }.bind(this));
     },
 

@@ -8,6 +8,8 @@ var helpers = require('../../../../helpers/common')();
 
 var ImageComponent = require('./image');
 
+var storeRead = require('../../utils').storeRead;
+
 module.exports = React.createClass({
     displayName: 'Article',
 
@@ -31,10 +33,6 @@ module.exports = React.createClass({
         return (
             <h3 className='article-header'>
                 {this.props.article.title}
-                <span className="article-source-read">
-                    <i className="fa fa-check-circle" aria-hidden="true"></i>
-                    已阅 
-                </span>
             </h3>
         );
     },
@@ -50,6 +48,13 @@ module.exports = React.createClass({
             (
                 <p className='source'>
                     {source}
+                    {
+                        this.props.article.read &&  
+                            <span className="article-source-read">
+                                <i className="fa fa-check-circle" aria-hidden="true"></i>
+                                已阅 
+                            </span>
+                    }
                 </p> 
             )  
             : null;
@@ -70,10 +75,17 @@ module.exports = React.createClass({
         return this.props.article.content ? '/article/' + encodeURIComponent(this.props.article.url) : this.props.article.url;
     },
 
+    goTo: function (){
+        //TODO 将该项标为已读 
+        var id = this.props.article.guid ;
+        storeRead(id, true)
+        window.location.href = this.getArticleLink() 
+    },
+
     render: function () {
         return (
             <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <a href={this.getArticleLink()} className='thumbnail article'>
+                <a href="javascript:void" onClick={ this.goTo }   className='thumbnail article'>
                     {this.getImageElement()}
                     <div className='caption caption-box'>
                         {this.getTitle()}

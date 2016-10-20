@@ -81,7 +81,7 @@ module.exports = React.createClass({
         var mv = this;
         this.fetchNextArticles(page, this.props.perPage, function (err, articles) {
             if (err) return console.log(err);
-            //TODO  获取新的文章列表  比较本地阅读的 将已经阅读的 标记出来
+            //获取新的文章列表  比较本地阅读的 将已经阅读的 标记出来
             var signReadArticles = articles.map(function(item){
                 item.read =  mv.readedSet[item.guid] || false;
                 return item ;

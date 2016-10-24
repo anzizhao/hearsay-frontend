@@ -66,6 +66,10 @@ function storeRead (id, value) {
         return store( storeKey, list)
     }
 }
+function clearStoreRead (id, value) {
+    var storeKey = 'storeRead'
+    return store( storeKey, [])
+}
 
 
 
@@ -74,4 +78,5 @@ module.exports = {
     storeSelect: storeSelect,
     goTop: goTop,
     storeRead: storeRead,
+    clearStoreRead: clearStoreRead,
 }

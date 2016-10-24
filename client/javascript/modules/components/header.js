@@ -28,12 +28,17 @@ module.exports = React.createClass({
                         </a>
                     </div>
 
-                    <div className="dropdown">
-                        <button className="btn btn-default dropdown-toggle" type="button" id="settingDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <span className="caret"></span>
-                        </button>
+                    <div className="dropdown  setting">
+                        <span 
+                            className="caret"
+                            id="settingDropdownMenu" 
+                            data-toggle="dropdown" 
+                            aria-haspopup="true" 
+                            aria-expanded="true"
+                        >
+                        </span>
                         <ul className="dropdown-menu" aria-labelledby="settingDropdownMenu">
-                            <li>清除已读记录</li>
+                            <li onClick={this.props.clearReadInfo } >清除已读记录</li>
                             <li>不获取图片</li>
                         </ul>
                     </div>
@@ -43,3 +48,11 @@ module.exports = React.createClass({
         );
     }
 });
+
+                        //<button className="btn btn-default dropdown-toggle" type="button" 
+                            //id="settingDropdownMenu" 
+                            //data-toggle="dropdown" 
+                            //aria-haspopup="true" 
+                            //aria-expanded="true"
+                        //>
+                        //</button>

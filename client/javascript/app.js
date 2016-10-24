@@ -20,6 +20,7 @@ var Header = require('./modules/components/header');
 var ExternalScripts = require('./modules/components/external-scripts');
 
 
+var clearStoreRead = require('./utils').clearStoreRead;
 var storeSelect = require('./utils').storeSelect;
 
 
@@ -48,15 +49,30 @@ var App = React.createClass({
         this.setState({ 'category': category });
     },
 
+    clearReadInfo: function () {
+        clearStoreRead();
+        this.setState({ 'clearReadInfoFlag': true});
+    },
+
+    setFalseClearReadInfoFlag: function () {
+        this.state.clearReadInfoFlag = false;
+    },
+
     // main rendering function (uses the state of the component, not the props)
     render: function() {
         return (
             <html>
                 <Head title={this.state.title} description={this.state.description} />
                 <body id='reactapp'>
-                    <Header title={this.state.title} />
+                    <Header title={this.state.title} clearReadInfo={this.clearReadInfo } />
                     <CategorySelecter categories={this.state.categories} changeCategory={this.changeCategory} />
-                    <ArticleBox api={api} perPage={5} category={this.state.category} />
+                    <ArticleBox 
+                        api={api} 
+                        perPage={5} 
+                        category={this.state.category} 
+                        clearReadInfoFlag={this.state.clearReadInfoFlag} 
+                        setFalseClearReadInfoFlag={ this.setFalseClearReadInfoFlag } 
+                    />
                     <ExternalScripts />
                 </body>
             </html>

@@ -35,18 +35,26 @@ module.exports = React.createClass({
     readedSet: {},
 
     componentWillReceiveProps: function (nextProps) {
+
         if (nextProps.category !== this.props.category) {
-            this.lastPage = -1;
-            this.setState({
-                page: 0,
-                articles: [],
-                hasMore: true
-            });
-        }
+            this.initState()
+        } else if ( nextProps.clearReadInfoFlag  ){
+            this.initState()
+            nextProps.setFalseClearReadInfoFlag()
+        } 
+        
     },
     componentDidMount: function(){
         this.afterDidMount = true;
         this.readedSet = storeRead()
+    },
+    initState: function(){
+        this.lastPage = -1;
+        this.setState({
+            page: 0,
+            articles: [],
+            hasMore: true
+        });
     },
 
     fetchNextArticles: function (page, perPage, callback) {

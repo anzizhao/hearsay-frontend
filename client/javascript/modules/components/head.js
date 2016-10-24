@@ -40,13 +40,17 @@ module.exports = React.createClass({
 
                 <link href='/othercss/merriweather.css' rel='stylesheet' type='text/css' />
                 <link href='/othercss/lato.css' rel='stylesheet' type='text/css' />
-                <link rel='stylesheet' href='/othercss/font-awesome.min.css' />
-                <link rel='stylesheet' href='/othercss/bootstrap.min.css' />
 
+                <link rel='stylesheet' href='/othercss/font-awesome.min.css' />
+
+                <link rel='stylesheet' href='http://lib.sinaapp.com/js/bootstrap/latest/css/bootstrap.min.css' />
+                
                 <link rel='stylesheet' href='/stylesheets/theme.css' />
                 <link rel='stylesheet' href='/stylesheets/app.css' />
 
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+                <script src="http://lib.sinaapp.com/js/jquery/3.1.0/jquery-3.1.0.min.js"></script>
+                <script src="http://lib.sinaapp.com/js/bootstrap/latest/js/bootstrap.min.js"></script>
+                
 
             </head>
         );

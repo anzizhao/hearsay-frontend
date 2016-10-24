@@ -28,6 +28,16 @@ module.exports = React.createClass({
                         </a>
                     </div>
 
+                    <div className="dropdown">
+                        <button className="btn btn-default dropdown-toggle" type="button" id="settingDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <span className="caret"></span>
+                        </button>
+                        <ul className="dropdown-menu" aria-labelledby="settingDropdownMenu">
+                            <li>清除已读记录</li>
+                            <li>不获取图片</li>
+                        </ul>
+                    </div>
+
                 </div>
             </nav>
         );

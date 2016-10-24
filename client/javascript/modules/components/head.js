@@ -19,6 +19,8 @@ module.exports = React.createClass({
         var title = this.props.title;
         var description = this.props.description;
 
+                //<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+                //<link rel='stylesheet' href='/othercss/bootstrap.min.css' />
         return (
             <head>
                 <title>{title}</title>
@@ -38,12 +40,14 @@ module.exports = React.createClass({
 
                 <link href='/othercss/merriweather.css' rel='stylesheet' type='text/css' />
                 <link href='/othercss/lato.css' rel='stylesheet' type='text/css' />
-                <link rel='stylesheet' href='/othercss/bootstrap.min.css' />
                 <link rel='stylesheet' href='/othercss/font-awesome.min.css' />
+                <link rel='stylesheet' href='/othercss/bootstrap.min.css' />
 
                 <link rel='stylesheet' href='/stylesheets/theme.css' />
                 <link rel='stylesheet' href='/stylesheets/app.css' />
-                
+
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
             </head>
         );
     }

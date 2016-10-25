@@ -29,26 +29,28 @@ module.exports = React.createClass({
                             <img className="navbar-logo" src='/logo.png' height='40'/>
                             <span className="navbar-logo-text">{this.props.title ? this.props.title : 'Hearsay'}</span>
                         </a>
+
+                        <div className="dropdown  setting">
+                            <span 
+                                className="caret"
+                                id="settingDropdownMenu" 
+                                data-toggle="dropdown" 
+                                aria-haspopup="true" 
+                                aria-expanded="true"
+                            >
+                            </span>
+                            <ul className="dropdown-menu" aria-labelledby="settingDropdownMenu">
+                                <li onClick={this.props.clearReadInfo } >清除已读</li>
+                                <li onClick={this.props.toggleHideImage} >
+                                    {
+                                        this.props.hideImage ?  '显示图片' : '隐藏图片'  
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+
                     </div>
 
-                    <div className="dropdown  setting">
-                        <span 
-                            className="caret"
-                            id="settingDropdownMenu" 
-                            data-toggle="dropdown" 
-                            aria-haspopup="true" 
-                            aria-expanded="true"
-                        >
-                        </span>
-                        <ul className="dropdown-menu" aria-labelledby="settingDropdownMenu">
-                            <li onClick={this.props.clearReadInfo } >清除已读</li>
-                            <li onClick={this.props.toggleHideImage} >
-                                {
-                                    this.props.hideImage ?  '显示图片' : '隐藏图片'  
-                                }
-                            </li>
-                        </ul>
-                    </div>
 
                 </div>
             </nav>

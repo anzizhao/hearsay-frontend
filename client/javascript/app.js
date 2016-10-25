@@ -22,6 +22,7 @@ var ExternalScripts = require('./modules/components/external-scripts');
 
 var clearStoreRead = require('./utils').clearStoreRead;
 var storeSelect = require('./utils').storeSelect;
+var storeHideImage = require('./utils').storeHideImage;
 
 
 // Main page component (this is asyncronous)
@@ -35,11 +36,13 @@ var App = React.createClass({
     },
 
     componentDidMount: function(){
-        var defaultSel = storeSelect() 
+        var defaultSel = storeSelect() ;
+        var hideImage = storeHideImage() || false;
         if( defaultSel )  {
             var category = defaultSel.value;
             this.setState({ 
                 category: category,
+                hideImage: hideImage,
             });
         }
     },
@@ -58,20 +61,33 @@ var App = React.createClass({
         this.state.clearReadInfoFlag = false;
     },
 
+    toggleHideImage : function () {
+        var cur = storeHideImage() || false ;
+        cur = !cur 
+        storeHideImage(cur)
+        this.setState({ 'hideImage': cur});
+    },
+
     // main rendering function (uses the state of the component, not the props)
     render: function() {
         return (
             <html>
                 <Head title={this.state.title} description={this.state.description} />
                 <body id='reactapp'>
-                    <Header title={this.state.title} clearReadInfo={this.clearReadInfo } />
+                    <Header 
+                        title={this.state.title} 
+                        clearReadInfo={this.clearReadInfo } 
+                        toggleHideImage={this.toggleHideImage}
+                        hideImage={ this.state.hideImage } 
+                    />
                     <CategorySelecter categories={this.state.categories} changeCategory={this.changeCategory} />
                     <ArticleBox 
                         api={api} 
                         perPage={5} 
                         category={this.state.category} 
                         clearReadInfoFlag={this.state.clearReadInfoFlag} 
-                        setFalseClearReadInfoFlag={ this.setFalseClearReadInfoFlag } 
+                        setFalseClearReadInfoFlag={ this.setFalseClearReadInfoFlag }
+                        hideImage={ this.state.hideImage } 
                     />
                     <ExternalScripts />
                 </body>

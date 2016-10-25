@@ -1,16 +1,3 @@
-function store (namespace, data) {
-    if (data) {
-        return localStorage.setItem(namespace, JSON.stringify(data));
-    }
-
-    var store = localStorage.getItem(namespace);
-    return (store && JSON.parse(store)) || null;
-}
-
-function storeSelect (data) {
-    return store('storeSelect', data )
-}
-
 
 function goTop(acceleration, time) {
     acceleration = acceleration || 0.1;
@@ -47,6 +34,26 @@ function goTop(acceleration, time) {
         }, time);
     }
 }
+
+
+function store (namespace, data) {
+    if ( typeof data !== 'undefined' ) {
+        return localStorage.setItem(namespace, JSON.stringify(data));
+    }
+
+    var store = localStorage.getItem(namespace);
+    return (store && JSON.parse(store)) || null;
+}
+
+function storeSelect (data) {
+    return store('storeSelect', data )
+}
+
+function storeHideImage (data) {
+    return store('storeHideImage', data )
+}
+
+
 // 没有参数的 返回list
 // id  返回某项的值 
 // id value  设置某个项
@@ -68,7 +75,7 @@ function storeRead (id, value) {
 }
 function clearStoreRead (id, value) {
     var storeKey = 'storeRead'
-    return store( storeKey, [])
+    return store( storeKey, {})
 }
 
 
@@ -79,4 +86,5 @@ module.exports = {
     goTop: goTop,
     storeRead: storeRead,
     clearStoreRead: clearStoreRead,
+    storeHideImage: storeHideImage,
 }

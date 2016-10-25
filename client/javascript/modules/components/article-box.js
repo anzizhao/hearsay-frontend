@@ -40,6 +40,8 @@ module.exports = React.createClass({
             this.initState()
         } else if ( nextProps.clearReadInfoFlag  ){
             this.initState()
+            // 重置内存的数据
+            this.readedSet = {}
             nextProps.setFalseClearReadInfoFlag()
         } 
         
@@ -115,11 +117,13 @@ module.exports = React.createClass({
         if(! this.state.articles ) {
             return  
         } else {
+            var mv =  this 
             return this.state.articles.map(function (article) {
                 return (
                     <Article
                         key={article.guid}
                         article={article}
+                        hideImage={ mv.props.hideImage }
                     />
                 );
             });

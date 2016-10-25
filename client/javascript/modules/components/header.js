@@ -12,7 +12,10 @@ module.exports = React.createClass({
         return null;
     },
 
-    shouldComponentUpdate: function() {
+    shouldComponentUpdate: function(np, ns) {
+        if( np.hideImage !== this.props.hideImage ) {
+            return true 
+        }
         return false;
     },
 
@@ -38,8 +41,12 @@ module.exports = React.createClass({
                         >
                         </span>
                         <ul className="dropdown-menu" aria-labelledby="settingDropdownMenu">
-                            <li onClick={this.props.clearReadInfo } >清除已读记录</li>
-                            <li>不获取图片</li>
+                            <li onClick={this.props.clearReadInfo } >清除已读</li>
+                            <li onClick={this.props.toggleHideImage} >
+                                {
+                                    this.props.hideImage ?  '显示图片' : '隐藏图片'  
+                                }
+                            </li>
                         </ul>
                     </div>
 

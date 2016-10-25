@@ -14,6 +14,10 @@ module.exports = React.createClass({
     displayName: 'Article',
 
     getImageElement: function () {
+        if( this.props.hideImage ) {
+            return 
+        }
+
         var src;
 
         // use meta:og image if available

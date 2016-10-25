@@ -180,9 +180,18 @@ a:hover
     z-index 100
     background-color #00bcd4
     box-shadow 3px 2px 10px gray 
+    width 40px
+    height 40px
+    border-radius 50% 
+
+
 
 .topButton  > i 
     color white
+    position relative
+    left 50%
+    top 50%
+    transform translate(-50%, -50%)
 
 .article-source-read  
     padding 0 5px 0 20px
@@ -216,8 +225,11 @@ a:hover
 .setting > ul > li:hover 
     background-color: rgba(128, 128, 128, 0.27)
     
+.setting i
+    margin-top 10px
+    cursor pointer
 
-.setting .caret
+.setting .caret 
     margin-top 25px
     cursor pointer
     border-top 7px solid #000

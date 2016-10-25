@@ -19,6 +19,10 @@ module.exports = React.createClass({
         return false;
     },
 
+                            //<span 
+                                //className="caret"
+                            //>
+                            //</span>
     render: function() {
         return (
             <nav className='navbar navbar-default navbar-static-top' role='navigation'>
@@ -31,14 +35,15 @@ module.exports = React.createClass({
                         </a>
 
                         <div className="dropdown  setting">
-                            <span 
-                                className="caret"
+
+                            <i className="fa fa-caret-down fa-2x" 
+                                aria-hidden="true"
                                 id="settingDropdownMenu" 
                                 data-toggle="dropdown" 
                                 aria-haspopup="true" 
                                 aria-expanded="true"
-                            >
-                            </span>
+                            ></i>
+
                             <ul className="dropdown-menu" aria-labelledby="settingDropdownMenu">
                                 <li onClick={this.props.clearReadInfo } >清除已读</li>
                                 <li onClick={this.props.toggleHideImage} >

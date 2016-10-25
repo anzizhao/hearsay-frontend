@@ -156,7 +156,7 @@ module.exports = React.createClass({
                     </div>
                 </div>
                 <div className='topButton' onClick={ this.wrapGoTop.bind(this) } >
-                    <i className="fa fa-angle-double-up fa-3x"  aria-hidden="true"></i>
+                    <i className="fa fa-angle-double-up fa-2x"  aria-hidden="true"></i>
                 </div>
             </div>
         );

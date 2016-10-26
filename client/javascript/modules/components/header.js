@@ -45,11 +45,23 @@ module.exports = React.createClass({
                             ></i>
 
                             <ul className="dropdown-menu" aria-labelledby="settingDropdownMenu">
-                                <li onClick={this.props.clearReadInfo } >清除已读</li>
+                                <li onClick={this.props.clearReadInfo } >
+                                    <span>
+                                        清除已读
+                                    </span> 
+                                </li>
                                 <li onClick={this.props.toggleHideImage} >
                                     {
                                         this.props.hideImage ?  '显示图片' : '隐藏图片'  
                                     }
+                                </li>
+                                <li >
+                                    <a 
+                                        href="http://www.anzizhao.com"
+                                        style={{ padding: 0 }} 
+                                    >
+                                        关于我 
+                                    </a>
                                 </li>
                             </ul>
                         </div>

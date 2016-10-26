@@ -85,10 +85,12 @@ module.exports = React.createClass({
         storeRead(id, true)
         window.location.href = this.getArticleLink() 
     },
-
     render: function () {
         return (
-            <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div 
+                className="col-lg-3 col-md-4 col-sm-6 col-xs-12"
+                style={{ margin: '2px 0'}}
+            >
                 <a href="javascript:void" onClick={ this.goTo }   className='thumbnail article'>
                     {this.getImageElement()}
                     <div className='caption caption-box'>

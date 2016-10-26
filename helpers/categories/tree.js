@@ -4,7 +4,25 @@ var categoryTree = [
         value: ''
     },
     {
-        display: 'Technology',
+        display: '科学',
+        value: 'science',
+        children: [
+            {
+                display: '科学松鼠',
+                value: 'songshuhui'
+            },
+            {
+                display: '科学网',
+                value: 'science'
+            },
+            {
+                display: 'Wired Science',
+                value: 'wired'
+            }
+        ]
+    },
+    {
+        display: '技术',
         value: 'technology',
         children: [
             // 国外的最大的rss 网站
@@ -15,10 +33,6 @@ var categoryTree = [
             {
                 display: 'Hacker News',
                 value: 'hackernews'
-            },
-            {
-                display: 'Wired.com',
-                value: 'wired'
             },
             {
                 display: 'Mashable',
@@ -35,26 +49,35 @@ var categoryTree = [
         ]
     },
     {
-        display: 'Frontend',
+        display: 'js',
         value: 'frontend',
         children: [
             {
                 display: '稀金前端',
                 value: 'xitu'
-            }
-        ]
-    },
-    {
-        display: 'nodejs',
-        value: 'node',
-        children: [
+            },
             {
-                display: 'node weekly',
+                display: 'Medium',
+                value: 'medium'
+            },
+            {
+                display: 'Smashing Magazine',
+                value: 'smashingmagazine'
+            },
+            {
+                display: 'Ourjs',
+                value: 'ourjs'
+            },
+            {
+                display: 'Nodeweekly',
                 value: 'nodeweekly'
+            },
+            {
+                display: 'segmentFault',
+                value: 'segmentfault'
             }
         ]
     },
-
     {
         display: 'Blogs',
         value: 'blogs',
@@ -64,29 +87,9 @@ var categoryTree = [
                 value: 'ruanyifeng'
             },
             {
-                display: '天镶',
-                value: 'tianyu'
-            },
-            {
                 display: 'jerryQu',
                 value: 'jerryQu'
             },
-            {
-                display: '十年踪迹',
-                value: 'shinianzongji'
-            },
-            {
-                display: 'Coding Horror (Jeff Atwood)',
-                value: 'codinghorror'
-            },
-            {
-                display: 'Chris Dixon',
-                value: 'chrisdixon'
-            },
-            {
-                display: 'Smashing Magazine',
-                value: 'smashingmagazine'
-            }
         ]
     },
     {

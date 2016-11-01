@@ -35,7 +35,10 @@ var App = React.createClass({
                 <Head title={this.state.title} description={this.state.description} />
                 <body id='reactapp'>
                     <Header title={this.state.title} />
-                    <ArticleViewer article={this.state.article} />
+                    <ArticleViewer 
+                        api={api} 
+                        article={this.state.article} 
+                    />
                     <ExternalScripts />
                 </body>
             </html>

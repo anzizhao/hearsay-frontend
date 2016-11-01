@@ -1,6 +1,7 @@
 exports = module.exports = function (services) {
     return {
         entries: require('./entries')(services.entries),
-        entriesContent: require('./entries')(services.entriesContent)
+        entriesContent: require('./entries')(services.entriesContent),
+        images: require('./images')(services.images )
     };
 };

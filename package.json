@@ -7,7 +7,7 @@
   "version": "0.2.9",
   "description": "Hearsay Frontend",
   "dependencies": {
-    "async": "0.9.0",
+    "async": "^2.1.2",
     "body-parser": "1.2.2",
     "browser-sync": "^1.7.2",
     "browserify": "5.10.x",
@@ -16,7 +16,7 @@
     "connect-redis": "2.0.0",
     "convict": "0.4.2",
     "cookie-parser": "1.1.0",
-    "debug": "0.8.1",
+    "debug": "^2.2.0",
     "envify": "1.2.1",
     "errorhandler": "1.0.1",
     "express": "4.4.3",
@@ -54,6 +54,7 @@
     "serve-favicon": "2.0.0",
     "stylus": "0.46.3",
     "superagent": "0.18.0",
+    "uuid": "^2.0.3",
     "validator": "3.12.0",
     "vinyl-source-stream": "0.1.1",
     "watchify": "^2.1.1"
@@ -73,8 +74,10 @@
     "gulp": "gulp",
     "build": "gulp build",
     "debug": "/usr/local/share/node-v0.10.36-linux-x64/bin/node debug  app.js",
+    "debugU": "DEBUG=services:images:get /usr/local/share/node-v0.10.46-linux-x64/bin/node debug  app.js",
     "start": "/usr/local/share/node-v0.10.36-linux-x64/bin/node   app.js",
-    "startU": "/usr/local/share/node-v0.10.46-linux-x64/bin/node   app.js"
+    "startU": "/usr/local/share/node-v0.10.46-linux-x64/bin/node   app.js",
+    "startUP": "sh dev.sh &&  /usr/local/share/node-v0.10.46-linux-x64/bin/node   app.js"
   },
   "author": "Eirik Vullum <eirik@evconsult.no>"
 }

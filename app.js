@@ -11,7 +11,7 @@ var app = express();
 var helpers = require('./helpers')();
 var config = require('./config');
 var setup = require('./setup');
-var common = require('hearsay-common');
+//var common = require('hearsay-common');
 
 // database connection
 setup.db(mongoose, config);
@@ -33,7 +33,8 @@ var server = http.createServer(app);
 
 // app modules
 var ipc = require('./modules/ipc')(0);
-var models = common.models(mongoose);
+//var models = common.models(mongoose);
+var models = require('./model')(mongoose);
 var services = require('./services')(models, helpers);
 var middleware = require('./middleware')();
 var handlers = require('./handlers')(services, helpers);

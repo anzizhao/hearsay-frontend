@@ -76,7 +76,11 @@ module.exports = React.createClass({
     },
 
     getArticleLink: function () {
-        return this.props.article.content ? '/article/' + encodeURIComponent(this.props.article.url) : this.props.article.url;
+        var url =  this.props.article.url;
+        if( this.props.article.content ) {
+            url =  '/article/' + encodeURIComponent(this.props.article.url) + '?c=' + this.props.article.category.join('_');
+        }
+        return url;
     },
 
     goTo: function (){
@@ -91,7 +95,11 @@ module.exports = React.createClass({
                 className="col-lg-3 col-md-4 col-sm-6 col-xs-12"
                 style={{ margin: '2px 0'}}
             >
-                <a href="javascript:void" onClick={ this.goTo }   className='thumbnail article'>
+                <a 
+                    href="javascript:void" 
+                    onClick={ this.goTo }   
+                    className='thumbnail article'
+                >
                     {this.getImageElement()}
                     <div className='caption caption-box'>
                         {this.getTitle()}

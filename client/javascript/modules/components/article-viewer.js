@@ -6,8 +6,57 @@ var React = require('react');
 
 var ImageComponent = require('./image');
 
+var routeParams = require('../../utils').routeParams;
+
 module.exports = React.createClass({
     displayName: 'ArticleViewer',
+    
+    componentDidMount: function(){
+        var params = routeParams();
+        params.forEach(function(item){
+            console.dir(item)
+            if( item.key === 'c') {
+                switch (item.value) {
+                    case 'general_zhihu':
+                        this.zhihuLeechImg();
+                        break;
+                    case 'frontend_xitu':
+                        this.xiTuLeechImg();
+                        break;
+                    default:
+
+                } 
+            }
+        }.bind(this) )
+    },
+
+    xiTuLeechImg: function(){
+        // 稀土掘金图片的 延迟加载处理
+       var imgs = document.getElementsByTagName('img');
+       var i , img, len=imgs.length;
+       for(i=0; i<len; i++) {
+           img = imgs[i];
+           if( img.dataset.src )  {
+               console.log( img.src )
+               img.src = img.dataset.src 
+               console.log( img.src )
+           }
+       }
+    },
+    zhihuLeechImg: function(category){
+       var imgs = document.getElementsByTagName('img');
+       var i , img, len=imgs.length, sendImgs=[];
+       for(i=0; i<len; i++) {
+           img = imgs[i];
+           sendImgs.push( img.src );
+       }
+       this.props.api.images.get({
+           category: category,
+           imgs: sendImgs,
+       },function(err, images){
+            console.dir(images) 
+       })
+    },
 
     getImageElement: function () {
         var src;

@@ -78,7 +78,18 @@ function clearStoreRead (id, value) {
     return store( storeKey, {})
 }
 
-
+function routeParams (){
+    var params = [];
+    var query = window.location.search.substr(1);
+    query.split('&').forEach(function(item){
+        var result = item.split('=');
+        params.push( {
+            key: result[0],
+            value: result[1]
+        })
+    }) 
+    return params;
+}
 
 module.exports = {
     store: store,
@@ -87,4 +98,5 @@ module.exports = {
     storeRead: storeRead,
     clearStoreRead: clearStoreRead,
     storeHideImage: storeHideImage,
+    routeParams: routeParams,
 }

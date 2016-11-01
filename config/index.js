@@ -87,6 +87,10 @@ var config = module.exports = convict({
                 env: 'REDIS_DB'
             }
         }
+    },
+    leechImage: {
+        saveDir: '/var/leechImage/', 
+        urlDir: '/images/'
     }
 });
 

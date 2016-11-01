@@ -76,8 +76,8 @@
     "debug": "/usr/local/share/node-v0.10.36-linux-x64/bin/node debug  app.js",
     "debugU": "DEBUG=services:images:get /usr/local/share/node-v0.10.46-linux-x64/bin/node debug  app.js",
     "start": "/usr/local/share/node-v0.10.36-linux-x64/bin/node   app.js",
-    "startU": "/usr/local/share/node-v0.10.46-linux-x64/bin/node   app.js",
-    "startUP": "sh dev.sh &&  /usr/local/share/node-v0.10.46-linux-x64/bin/node   app.js"
+    "startU": "DEBUG=services:images:get /usr/local/share/node-v0.10.46-linux-x64/bin/node   app.js",
+    "startUP": "/usr/local/share/node-v0.10.46-linux-x64/bin/node   app.js"
   },
   "author": "Eirik Vullum <eirik@evconsult.no>"
 }

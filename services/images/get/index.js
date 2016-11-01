@@ -67,7 +67,7 @@ function getImage (Entry, image, callback) {
         if ( entry ) {
             return callback(null, {
                 origin: entry.origin, 
-                url: entry.url,
+                url: urlDir + entry.url,
             });
         }
         //不存在

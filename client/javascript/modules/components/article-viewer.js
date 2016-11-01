@@ -14,7 +14,6 @@ module.exports = React.createClass({
     componentDidMount: function(){
         var params = routeParams();
         params.forEach(function(item){
-            console.dir(item)
             if( item.key === 'c') {
                 switch (item.value) {
                     case 'general_zhihu':
@@ -37,24 +36,39 @@ module.exports = React.createClass({
        for(i=0; i<len; i++) {
            img = imgs[i];
            if( img.dataset.src )  {
-               console.log( img.src )
+               //console.log( img.src )
                img.src = img.dataset.src 
-               console.log( img.src )
+               //console.log( img.src )
            }
        }
     },
+
     zhihuLeechImg: function(category){
        var imgs = document.getElementsByTagName('img');
        var i , img, len=imgs.length, sendImgs=[];
        for(i=0; i<len; i++) {
            img = imgs[i];
+           if( img.src === '/logo.png' ) {
+                continue; 
+           }
            sendImgs.push( img.src );
        }
        this.props.api.images.get({
            category: category,
            imgs: sendImgs,
        },function(err, images){
-            console.dir(images) 
+           //替换images
+           images.forEach(function(item){
+               var i = 0;
+               var img ;
+               for(i=0; i<len; i++){
+                    img = imgs[i]; 
+                    if( img.src === item.origin ) {
+                        img.src = item.url; 
+                        break;
+                    }
+               }
+           })  
        })
     },
 
@@ -76,7 +90,15 @@ module.exports = React.createClass({
 
     getContentBody: function () {
         if (!this.props.article.content.body) return;
-        return <div id='content' className='limit-container bottom200' dangerouslySetInnerHTML={{__html: this.props.article.content.body}}></div>
+        return (
+            <div 
+                id='content' 
+                className='limit-container bottom200' 
+                rel='content'
+                dangerouslySetInnerHTML={{__html: this.props.article.content.body}}
+            >
+            </div>
+        ) 
     },
 
     render: function () {

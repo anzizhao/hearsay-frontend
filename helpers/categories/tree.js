@@ -57,6 +57,10 @@ var categoryTree = [
                 value: 'xitu'
             },
             {
+                display: '伯乐在线',
+                value: 'bole'
+            },
+            {
                 display: 'Medium',
                 value: 'medium'
             },

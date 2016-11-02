@@ -16,6 +16,7 @@ module.exports = React.createClass({
         params.forEach(function(item){
             if( item.key === 'c') {
                 switch (item.value) {
+                    case 'frontend_bole':
                     case 'general_zhihu':
                         this.zhihuLeechImg();
                         break;

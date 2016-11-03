@@ -48,6 +48,7 @@ module.exports = React.createClass({
                 <link rel='stylesheet' href='/stylesheets/theme.css' />
                 <link rel='stylesheet' href='/stylesheets/app.css' />
 
+
                 <script src="http://lib.sinaapp.com/js/jquery/3.1.0/jquery-3.1.0.min.js"></script>
                 <script src="http://lib.sinaapp.com/js/bootstrap/latest/js/bootstrap.min.js"></script>
                 

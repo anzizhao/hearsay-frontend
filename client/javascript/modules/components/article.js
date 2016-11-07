@@ -12,6 +12,12 @@ var storeRead = require('../../utils').storeRead;
 
 module.exports = React.createClass({
     displayName: 'Article',
+    initState: function(){
+        this.lastPage = -1;
+        this.setState({
+            image: null,
+        });
+    },
 
     getImageElement: function () {
         if( this.props.hideImage ) {
@@ -29,9 +35,28 @@ module.exports = React.createClass({
         if (!src && this.props.article.image) {
             src = this.props.article.image;
         }
-
-        return src ? <ImageComponent src={src} classes={'article-image'} /> : null;
+        if( this.state.image ) {
+            src = this.state.image; 
+        }
+        return src ? 
+            <ImageComponent 
+                src={src} 
+                classes={'article-image'} 
+                fetchListItemImage={this.fetchLisItemImage.bind(this) }
+                /> : null;
     },
+
+    fetchListItemImage: function(src) {
+        var id = this.props.article.guid ;
+        this.props.api.images.listItem({
+            id: id,
+            src: src, 
+        }, function(err, obj){
+            this.setState({
+                image: obj.url 
+            })        
+        });
+    }
 
     getTitle: function ()  {
         return (

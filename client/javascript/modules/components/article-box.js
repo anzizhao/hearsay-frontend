@@ -124,6 +124,7 @@ module.exports = React.createClass({
                         key={article.guid}
                         article={article}
                         hideImage={ mv.props.hideImage }
+                        api={this.props.api}
                     />
                 );
             });

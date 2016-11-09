@@ -7,7 +7,7 @@ exports = module.exports = function (express, middleware, handlers, path) {
 
     router.route(path + 'listItem')
         .all(middleware.isLoggedInAPI)
-        .get(handlers.images.listItem)
+        .get(handlers.listItemImages.get )
 
     return router;
 };

@@ -73,7 +73,7 @@
     "postinstall": "npm run build",
     "gulp": "gulp",
     "build": "gulp build",
-    "debug": "/usr/local/share/node-v0.10.36-linux-x64/bin/node debug  app.js",
+    "debug": "DEBUG=services:images:get /usr/local/share/node-v0.10.36-linux-x64/bin/node debug  app.js",
     "debugU": "DEBUG=services:images:get /usr/local/share/node-v0.10.46-linux-x64/bin/node debug  app.js",
     "start": "/usr/local/share/node-v0.10.36-linux-x64/bin/node   app.js",
     "startU": "DEBUG=services:images:get /usr/local/share/node-v0.10.46-linux-x64/bin/node   app.js",

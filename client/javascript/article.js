@@ -34,7 +34,7 @@ var App = React.createClass({
             <html>
                 <Head title={this.state.title} description={this.state.description} />
                 <body id='reactapp'>
-                    <div id='wx_pic' style='margin:0 auto;display:none;'>
+                    <div id='wx_pic' style={{ margin:'0 auto', display:'none'}}>
                         <img src='/luobin.jpg'/>
                     </div>
 

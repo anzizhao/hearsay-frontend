@@ -3,12 +3,18 @@ var request = require('superagent');
 var async = require('async');
 var config = require('../../../config');
 var uuid = require('uuid');
-var fs = require('fs');
 var debug = require('debug')("services:images:get");
+var util = require('../../util');
+var fs = require('fs');
+
+var fetchImage = util.fetchImage;
+var saveImageToDir = util.saveImageToDir;
+
 //var Entry;
 var leechImageCfg = config.get('leechImage');
 var saveDir = leechImageCfg.saveDir;
 var urlDir = leechImageCfg.urlDir;
+
 
 function fetchImage (image, callback) {
     request
@@ -37,15 +43,15 @@ function saveImage(image, Entry, id, res, callback) {
                 callback(error);
             });
         },
-        function (callback) {
-            // 保存图片  返回新的图片地址 
-            var savePath = saveDir +  id;
-            var w = fs.createWriteStream(savePath)
-            res.pipe(w)
-            w.on('finish', function(){
-                callback(null);
-            });
-        }
+        saveImageToDir(id, res),
+        //function (callback) {
+            //var savePath = saveDir +  id;
+            //var w = fs.createWriteStream(savePath)
+            //res.pipe(w)
+            //w.on('finish', function(){
+                //callback(null);
+            //});
+        //}
     ], function(err){
         callback(err,  {
             origin: image, 

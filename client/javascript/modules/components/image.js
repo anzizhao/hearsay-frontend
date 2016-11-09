@@ -14,7 +14,10 @@ module.exports = React.createClass({
         // 父类触发更新
         this.props.fetchListItemImage(this.props.src);
     },
-
+    onLoad: function (e){
+        //图片加载完成  查看是否error 
+        console.log('onLoad');
+    },
     componentDidMount: function () {
         if (this.props.forceUpdate) {
             // reload src to force onerror to be called if image link was not valid
@@ -24,6 +27,7 @@ module.exports = React.createClass({
     },
 
     render: function () {
+                //onLoad={ this.onLoad }
         return (
             <img 
                 onError={this.onError} 

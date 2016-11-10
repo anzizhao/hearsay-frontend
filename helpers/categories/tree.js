@@ -79,6 +79,10 @@ var categoryTree = [
             {
                 display: 'segmentFault',
                 value: 'segmentfault'
+            },
+            {
+                display: 'sitepoint',
+                value: 'sitepoint'
             }
         ]
     },

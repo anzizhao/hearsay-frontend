@@ -1,3 +1,5 @@
+var request = require('superagent');
+var uuid = require('uuid');
 
 var fs = require('fs');
 var config = require('../config');
@@ -33,4 +35,5 @@ function fetchImage (image, callback) {
 
 exports = module.exports = {
     fetchImage:fetchImage,
+    saveImageToDir: saveImageToDir,
 }

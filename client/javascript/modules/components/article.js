@@ -12,14 +12,17 @@ var storeRead = require('../../utils').storeRead;
 
 module.exports = React.createClass({
     displayName: 'Article',
-
+    lastPage: -1,
+    getInitialState: function(){
+        return {
+            image: null, 
+        } 
+    },
     getImageElement: function () {
         if( this.props.hideImage ) {
             return 
         }
-
         var src;
-
         // use meta:og image if available
         if (this.props.article.content && this.props.article.content.image) {
             src = this.props.article.content.image;
@@ -29,8 +32,26 @@ module.exports = React.createClass({
         if (!src && this.props.article.image) {
             src = this.props.article.image;
         }
-
-        return src ? <ImageComponent src={src} classes={'article-image'} /> : null;
+        if( this.state.image ) {
+            src = this.state.image; 
+        }
+        return src ? 
+            <ImageComponent 
+                src={src} 
+                classes={'article-image'} 
+                fetchListItemImage={this.fetchListItemImage.bind(this) }
+                /> : null;
+    },
+    fetchListItemImage: function(src) {
+        var id = this.props.article.url;
+        this.props.api.images.listItem({
+            id: id,
+            src: src, 
+        }, function(err, obj){
+            this.setState({
+                image: obj.url 
+            })        
+        });
     },
 
     getTitle: function ()  {

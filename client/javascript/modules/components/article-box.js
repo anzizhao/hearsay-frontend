@@ -49,9 +49,9 @@ module.exports = React.createClass({
         
     },
     componentDidMount: function(){
+        this.loadMore =  _.throttle( this.loadMoreArticles , 1000);
         this.afterDidMount = true;
         this.readedSet = storeRead()
-        this.loadMore =  _.throttle( this.loadMoreArticles.bind(this), 200);
     },
     initState: function(){
         this.lastPage = -1;
@@ -99,9 +99,8 @@ module.exports = React.createClass({
                 item.read =  mv.readedSet[item.guid] || false;
                 return item ;
             }) 
-            this.includeLoadedArticles(page, signReadArticles );
-
-        }.bind(this));
+            mv.includeLoadedArticles(page, signReadArticles );
+        });
     },
 
     getLoaderElement: function () {
@@ -159,7 +158,7 @@ module.exports = React.createClass({
                         </InfiniteScroll>
                     </div>
                 </div>
-                <div className='topButton' onClick={ this.wrapGoTop.bind(this) } >
+                <div className='topButton' onClick={ this.wrapGoTop } >
                     <i className="fa fa-angle-double-up fa-2x"  aria-hidden="true"></i>
                 </div>
             </div>

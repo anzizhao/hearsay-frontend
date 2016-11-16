@@ -25,6 +25,8 @@ var goTop = require('../../utils').goTop;
 
 var storeRead = require('../../utils').storeRead;
 
+var _ = require('underscore');
+
 module.exports = React.createClass({
     displayName: 'ArticleBox',
 
@@ -49,6 +51,7 @@ module.exports = React.createClass({
     componentDidMount: function(){
         this.afterDidMount = true;
         this.readedSet = storeRead()
+        this.loadMore =  _.throttle( this.loadMoreArticles.bind(this), 200);
     },
     initState: function(){
         this.lastPage = -1;
@@ -140,7 +143,7 @@ module.exports = React.createClass({
                             ref='masonryContainer'
                             pageStart={this.state.page - 1}
                             loader={this.getLoaderElement()}
-                            loadMore={this.loadMoreArticles}
+                            loadMore={this.loadMore }
                             hasMore={this.state.hasMore}
                             threshold={1000}
                         >

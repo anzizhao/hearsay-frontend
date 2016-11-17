@@ -35,11 +35,12 @@ module.exports = React.createClass({
         if( this.state.image ) {
             src = this.state.image; 
         }
+                //fetchListItemImage={this.fetchListItemImage.bind(this) }
         return src ? 
             <ImageComponent 
                 src={src} 
                 classes={'article-image'} 
-                fetchListItemImage={this.fetchListItemImage.bind(this) }
+                fetchListItemImage={ this.fetchListItemImage  }
                 /> : null;
     },
     fetchListItemImage: function(src) {

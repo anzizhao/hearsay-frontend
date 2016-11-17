@@ -88,7 +88,10 @@ module.exports = React.createClass({
     },
 
     loadMoreArticles: function (page) {
-        if(! this.afterDidMount ||  this.lastPage >= page ) {
+            //! this.afterDidMount 
+        if( this.lastPage >= page 
+                || (page > 0 && this.state.articles.length === 0 )  // 第一个页面还有加载情况  第一次加载时候  等待时间比较长  会出现连续请求的情况
+          ) {
             return  
         }
         this.lastPage = page;

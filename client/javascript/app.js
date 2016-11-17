@@ -88,7 +88,7 @@ var App = React.createClass({
                     <CategorySelecter categories={this.state.categories} changeCategory={this.changeCategory} />
                     <ArticleBox 
                         api={api} 
-                        perPage={20} 
+                        perPage={15} 
                         category={this.state.category} 
                         clearReadInfoFlag={this.state.clearReadInfoFlag} 
                         setFalseClearReadInfoFlag={ this.setFalseClearReadInfoFlag }

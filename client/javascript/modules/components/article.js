@@ -48,6 +48,10 @@ module.exports = React.createClass({
             id: id,
             src: src, 
         }, function(err, obj){
+            if( err ) {
+                console.error( err ) 
+                return 
+            }
             this.setState({
                 image: obj.url 
             })        

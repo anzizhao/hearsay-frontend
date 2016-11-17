@@ -49,7 +49,8 @@ module.exports = React.createClass({
         
     },
     componentDidMount: function(){
-        this.loadMore =  _.throttle( this.loadMoreArticles , 1000);
+        // 限流为3s
+        this.loadMore =  _.throttle( this.loadMoreArticles , 3000);
         this.afterDidMount = true;
         this.readedSet = storeRead()
     },

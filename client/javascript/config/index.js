@@ -1,8 +1,8 @@
 var apiUrl  
 if( process.env.CLOUD || process.env.NOT_SHOW_PORT ) {
-    apiUrl = 'http://' + process.env.CLIENT_DOMAIN + process.env.CLIENT_API_PATH ;
+    apiUrl = '//' + process.env.CLIENT_DOMAIN + process.env.CLIENT_API_PATH ;
 } else {
-    apiUrl = 'http://' + process.env.CLIENT_DOMAIN + ':' + process.env.PORT + process.env.CLIENT_API_PATH;
+    apiUrl = '//' + process.env.CLIENT_DOMAIN + ':' + process.env.PORT + process.env.CLIENT_API_PATH;
 }
 
 

@@ -8,7 +8,8 @@ exports = module.exports = function (services, helpers) {
             title: 'an news',
             description: 'the news that anzi concern about',
             startTime: new Date(),
-            categories: categories
+            categories: categories,
+            //supportWebp: false,
         };
 
         helpers.react.renderMarkupToString({

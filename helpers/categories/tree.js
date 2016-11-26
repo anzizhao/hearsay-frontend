@@ -13,7 +13,7 @@ var categoryTree = [
             },
             {
                 display: '科学网',
-                value: 'science'
+                value: 'sciencesite'
             },
             {
                 display: 'Wired Science',

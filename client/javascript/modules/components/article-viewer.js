@@ -107,7 +107,7 @@ module.exports = React.createClass({
 
         return (
             <div>
-                <div>
+                <div style={{ maxHeight: '400px', overflowY: 'hidden' }}>
                     {this.getImageElement()}
                 </div>
 

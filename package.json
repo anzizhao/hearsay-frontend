@@ -19,6 +19,7 @@
     "debug": "^2.2.0",
     "envify": "1.2.1",
     "errorhandler": "1.0.1",
+    "es6-promise": "^4.0.5",
     "express": "4.4.3",
     "express-session": "1.2.1",
     "fibers": "1.0.1",

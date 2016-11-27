@@ -12,7 +12,7 @@ module.exports = React.createClass({
         this.getDOMNode().remove();
         // 参考详情  调用接口后端抓取图片
         // 父类触发更新
-        this.props.fetchListItemImage(this.props.src);
+        //this.props.fetchListItemImage(this.props.src);
     },
     onLoad: function (e){
         //图片加载完成  查看是否error 

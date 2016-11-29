@@ -131,6 +131,7 @@ module.exports = React.createClass({
                         article={article}
                         hideImage={ mv.props.hideImage }
                         api={ mv.props.api }
+                        supportWebp={ mv.props.supportWebp }
                     />
                 );
             });

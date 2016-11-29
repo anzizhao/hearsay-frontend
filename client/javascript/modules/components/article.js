@@ -10,6 +10,7 @@ var ImageComponent = require('./image');
 
 var storeRead = require('../../utils').storeRead;
 
+
 module.exports = React.createClass({
     displayName: 'Article',
     lastPage: -1,
@@ -23,8 +24,13 @@ module.exports = React.createClass({
             return 
         }
         var src;
+        if ( this.props.article.imageB ) {
+            src = this.props.article.imageB;
+            src += this.props.supportWebp? 'webp' : '';
+        }
+
         // use meta:og image if available
-        if (this.props.article.content && this.props.article.content.image) {
+        if (!src && this.props.article.content && this.props.article.content.image) {
             src = this.props.article.content.image;
         }
 
@@ -32,6 +38,7 @@ module.exports = React.createClass({
         if (!src && this.props.article.image) {
             src = this.props.article.image;
         }
+         
         if( this.state.image ) {
             src = this.state.image; 
         }

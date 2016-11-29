@@ -25,6 +25,8 @@ var storeSelect = require('./utils').storeSelect;
 var storeHideImage = require('./utils').storeHideImage;
 
 
+var isSupportWebp = require('./utils').isSupportWebp;
+
 // Main page component (this is asyncronous)
 var App = React.createClass({
     displayName: 'MainApp',
@@ -45,6 +47,12 @@ var App = React.createClass({
                 hideImage: hideImage,
             });
         }
+        var mv = this;
+        isSupportWebp().then(function(result){
+            mv.setState({
+                supportWebp: result 
+            }) 
+        })
     },
 
 
@@ -93,6 +101,7 @@ var App = React.createClass({
                         clearReadInfoFlag={this.state.clearReadInfoFlag} 
                         setFalseClearReadInfoFlag={ this.setFalseClearReadInfoFlag }
                         hideImage={ this.state.hideImage } 
+                        supportWebp={this.state.supportWebp }
                     />
                     <ExternalScripts />
                 </body>

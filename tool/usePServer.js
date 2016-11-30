@@ -3,6 +3,7 @@ var request = require('request');
 var mongoose = require('mongoose');
 var config = require('../config');
 var setup = require('../setup');
+var util = require('./util');
 
 
 // database connection
@@ -45,24 +46,16 @@ transformMap.forEach(function(item){
     hostMapCategory[item.host] = item.category;
 })
 
-var g_pServerUrl = "http://localhost:8111/api/v1/picture/fetch";
+var g_pServerUrl;
+
+if( process.env.NODE_DEV === 'development') {
+    g_pServerUrl = "http://localhost:8111/api/v1/picture/fetch";
+} else {
+    g_pServerUrl = "https://image.anzizhao.com/api/v1/picture/fetch";
+}
 
 setTimeout(function(){
     var HearsayModel = models.hearsay.Entry;
-    //HearsayModel.find( {"host": "blog.jobbole.com" } , function(err, items) {
-        //console.log('after find')
-        //if (err) {
-            //console.log( 'err ')
-            //console.dir( err );
-            //return 
-        //}
-        //if (! items ) {
-            //return  console.error('not found');
-        //}
-        //items.forEach( function(item){
-            //console.log(item.host, item.image); 
-        //})
-    //})
     HearsayModel.find( {"host":{ "$in": hosts } } , function(err, items) {
         if (err) {
             console.dir( err );
@@ -76,8 +69,9 @@ setTimeout(function(){
                 return  
             }
 
+            var url = util.fixRelativePath( item.image, item.source);
             var requestData = {
-                url: item.image,
+                url: url,
                 category: hostMapCategory[item.host],
                 options: {
                     webp: true, 
@@ -92,7 +86,7 @@ setTimeout(function(){
             }, function(error, response, body) {
                 if (!error && response.statusCode == 200) {
                     console.log('result: ', body.data.url );
-                    item.image = body.data.url;
+                    item.imageB = body.data.url;
                     item.save();
                     return 
                 }

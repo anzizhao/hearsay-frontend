@@ -1,6 +1,5 @@
 exports = module.exports = function (Entry, helpers) {
     return function (body, callback) {
-        console.log(body);
 
         if (body.url) {
             Entry.findOne({ url: body.url }, null, {}, function (err, entry) {

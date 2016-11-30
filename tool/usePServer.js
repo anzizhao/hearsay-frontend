@@ -68,7 +68,7 @@ setTimeout(function(){
             if( ! item.image ) {
                 return  
             }
-
+            console.log( item.image);
             var url = util.fixRelativePath( item.image, item.source);
             var requestData = {
                 url: url,
@@ -96,7 +96,6 @@ setTimeout(function(){
 
         })
     })
-
-}, 1000)
+}, 2000)
 
 

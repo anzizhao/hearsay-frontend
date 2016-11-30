@@ -61,7 +61,7 @@ setTimeout(function(){
             console.dir( err );
             return 
         }
-        if (! items ) {
+        if ( !items.length ) {
             return  console.error('no item found');
         }
         items.forEach( function(item, index){

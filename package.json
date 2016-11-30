@@ -76,6 +76,7 @@
     "develop": "sh dev.sh",
     "postinstall": "npm run build",
     "gulp": "gulp",
+    "upsD": "NODE_DEV=development node tool/usePServer.js",
     "ups": "node tool/usePServer.js",
     "build": "gulp build",
     "orig": "find .  -maxdepth 6  -name '*.orig'  -type f | xargs rm -f ",

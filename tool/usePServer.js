@@ -46,7 +46,13 @@ transformMap.forEach(function(item){
     hostMapCategory[item.host] = item.category;
 })
 
-var g_pServerUrl = "http://localhost:8111/api/v1/picture/fetch";
+var g_pServerUrl;
+
+if( process.env.NODE_DEV === 'development') {
+    g_pServerUrl = "http://localhost:8111/api/v1/picture/fetch";
+} else {
+    g_pServerUrl = "https://image.anzizhao.com/api/v1/picture/fetch";
+}
 
 setTimeout(function(){
     var HearsayModel = models.hearsay.Entry;

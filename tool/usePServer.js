@@ -13,18 +13,18 @@ setup.db(mongoose, config);
 var models = require('../model')(mongoose);
 
 var transformMap = [
-    //{
-        //host: "arstechnica.com",
-        //category: "ArsTechnica",
-    //},
+    {
+        host: "arstechnica.com",
+        category: "ArsTechnica",
+    },
     //{
         //host: "mashable.com",
         //category: "Mashable",
     //},
-    {
-        host: 'www.wired.com',
-        category: "WiredScience",
-    },
+    //{
+        //host: 'www.wired.com',
+        //category: "WiredScience",
+    //},
     //{
         //host: "blog.jobbole.com",
         //category: "bole",
@@ -83,9 +83,13 @@ function reFetch404Item () {
         }
         items.forEach( function(item, index){
             //console.log('item: ', item.url, item.imageB )
-            if( ! item.imageB ) {
-                return 
-            }
+            //if( ! item.imageB ) {
+                //return 
+            //}
+            //if( ! item.content ||  item.content.imageB )  {
+                //return  
+            //}
+            //return makeFetchRequest(item);
             request({
                 url: 'https:' + item.imageB,
                 method: "GET",
@@ -143,6 +147,7 @@ function usePServer ( ){
 
 
 function makeFetchRequest(item) {
+    //var url = util.fixRelativePath( item.content.image, item.source);
     var url = util.fixRelativePath( item.image, item.source);
     var requestData = {
         url: url,

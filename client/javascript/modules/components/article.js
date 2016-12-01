@@ -23,10 +23,12 @@ module.exports = React.createClass({
         if( this.props.hideImage ) {
             return 
         }
-        var src;
+        var src, imageB = false, originSrc;
         if ( this.props.article.imageB ) {
             src = this.props.article.imageB;
             src += this.props.supportWebp? 'webp' : '';
+            imageB=true;
+            originSrc = this.props.article.image;
         }
 
         // use meta:og image if available
@@ -47,7 +49,9 @@ module.exports = React.createClass({
             <ImageComponent 
                 src={src} 
                 classes={'article-image'} 
-                fetchListItemImage={ this.fetchListItemImage  }
+                fetchListItemImage={ this.fetchListItemImage }
+                imageB={imageB}
+                originSrc={ originSrc }
                 /> : null;
     },
     fetchListItemImage: function(src) {

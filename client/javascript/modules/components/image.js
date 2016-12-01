@@ -7,13 +7,28 @@ var React = require('react');
 module.exports = React.createClass({
     displayName: 'Image',
 
+    componentWillReceiveProps: function(np) {
+        this.setState({
+            src: np.src 
+        })
+    },
+
     onError: function () {
         console.log('image error - removing');
-        this.getDOMNode().remove();
+        if( this.props.imageB && this.state.src !== this.props.originUrl ) {
+            this.setState({
+                src: this.props.originUrl 
+            })         
+
+        } else {
+            this.getDOMNode().remove();
+        }
         // 参考详情  调用接口后端抓取图片
         // 父类触发更新
         //this.props.fetchListItemImage(this.props.src);
     },
+
+
     onLoad: function (e){
         //图片加载完成  查看是否error 
         console.log('onLoad');
@@ -32,7 +47,7 @@ module.exports = React.createClass({
             <img 
                 onError={this.onError} 
                 className={this.props.classes} 
-                src={this.props.src} 
+                src={this.state.src} 
             />
         );
     }

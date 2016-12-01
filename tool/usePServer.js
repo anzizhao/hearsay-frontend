@@ -13,18 +13,18 @@ setup.db(mongoose, config);
 var models = require('../model')(mongoose);
 
 var transformMap = [
-    {
-        host: "arstechnica.com",
-        category: "ArsTechnica",
-    },
+    //{
+        //host: "arstechnica.com",
+        //category: "ArsTechnica",
+    //},
     //{
         //host: "mashable.com",
         //category: "Mashable",
     //},
-    //{
-        //host: 'www.wired.com',
-        //category: "WiredScience",
-    //},
+    {
+        host: 'www.wired.com',
+        category: "WiredScience",
+    },
     //{
         //host: "blog.jobbole.com",
         //category: "bole",
@@ -58,8 +58,8 @@ if( process.env.NODE_DEV === 'development') {
 
 // 对pServer 返回404的项 重新请求 
 setTimeout(function(){
-    reFetch404Item();
-    //usePServer();
+    //reFetch404Item();
+    usePServer();
 }, 1000)
 
 
@@ -130,25 +130,31 @@ function usePServer ( ){
             return  console.error('no item found');
         }
         items.forEach( function(item, index){
-            if( ! item.image 
-                || item.imageB 
-                ||( item.host.indexOf('jobbole.com') !== -1 && item.image.indexOf('/images') !== -1 ) 
-              ) 
-                    {
-                        return  
-                    }
+            //if( ! item.image 
+                //|| item.imageB 
+                //||( item.host.indexOf('jobbole.com') !== -1 && item.image.indexOf('/images') !== -1 ) 
+              //) 
+                    //{
+                        //return  
+                    //}
+            if( item.image.indexOf('post_wired_logo_150x60') !== -1 ) {
+                if( ! item.content || !item.content.image ) {
+                    return console.log('not content image', item.uuid, item.image);
+                }
 
-
-                    makeFetchRequest(item);
+                console.log( item.uuid, item.image);
+                makeFetchRequest(item);
+            }
         })
     })
+    console.log('finish')
 }
 
 
 
 function makeFetchRequest(item) {
-    //var url = util.fixRelativePath( item.content.image, item.source);
-    var url = util.fixRelativePath( item.image, item.source);
+    var url = util.fixRelativePath( item.content.image, item.source);
+    //var url = util.fixRelativePath( item.image, item.source);
     var requestData = {
         url: url,
         category: hostMapCategory[item.host],

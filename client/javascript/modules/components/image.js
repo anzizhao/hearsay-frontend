@@ -21,7 +21,7 @@ module.exports = React.createClass({
 
     onError: function () {
         console.log('image error - removing');
-        this.handleError( this.props.src );
+        this.props.handleError( this.props.src );
         //if( this.props.imageB && this.state.src !== this.props.originUrl ) {
             //this.setState({
                 //src: this.props.originUrl 

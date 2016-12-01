@@ -17,6 +17,7 @@ module.exports = React.createClass({
     getInitialState: function(){
         return {
             image: null, 
+            imageErr: 0 , //0 图片加载失败  1 imageB 加载失败  2 原始图片加载失败
         } 
     },
     getImageElement: function () {
@@ -24,7 +25,7 @@ module.exports = React.createClass({
             return 
         }
         var src, imageB = false, originSrc;
-        if ( this.props.article.imageB ) {
+        if ( this.state.imageErr !== 1   &&  this.props.article.imageB ) {
             src = this.props.article.imageB;
             src += this.props.supportWebp? 'webp' : '';
             imageB=true;
@@ -44,15 +45,30 @@ module.exports = React.createClass({
         if( this.state.image ) {
             src = this.state.image; 
         }
+        if( this.state.imageErr === 2 ) {
+            src = null; 
+        }
                 //fetchListItemImage={this.fetchListItemImage.bind(this) }
         return src ? 
             <ImageComponent 
                 src={src} 
                 classes={'article-image'} 
                 fetchListItemImage={ this.fetchListItemImage }
-                imageB={imageB}
-                originSrc={ originSrc }
+                handleError={ this.handleError }
                 /> : null;
+    },
+    handleError: function(src) {
+        var pa = this.props.article;
+        var err = 0;
+        if( pa.imageB  === src ) {
+            // 使用imageB 且失败
+            err = 1
+        } else {
+            err = 2
+        } 
+        this.setState({
+            imageErr: err,
+        })        
     },
     fetchListItemImage: function(src) {
         var id = this.props.article.url;

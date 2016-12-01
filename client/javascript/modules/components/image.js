@@ -7,6 +7,12 @@ var React = require('react');
 module.exports = React.createClass({
     displayName: 'Image',
 
+    getInitialState: function(){
+        return {
+            src: null, 
+        } 
+    },
+
     componentWillReceiveProps: function(np) {
         this.setState({
             src: np.src 

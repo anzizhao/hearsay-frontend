@@ -70,6 +70,7 @@
     ]
   },
   "scripts": {
+      "lint": "eslint --ext js client config handlers helpers middleware model modules routes services setup ",
     "startServer": "/usr/local/share/node-v0.10.36-linux-x64/bin/node   hearsay-frontend.js",
     "test": "jest",
     "develop": "sh dev.sh",

@@ -32,7 +32,7 @@ setup.configureExpress({
 var server = http.createServer(app);
 
 // app modules
-var ipc = require('./modules/ipc')(0);
+//var ipc = require('./modules/ipc')(0);
 //var models = common.models(mongoose);
 var models = require('./model')(mongoose);
 var services = require('./services')(models, helpers);

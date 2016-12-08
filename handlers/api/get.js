@@ -5,7 +5,7 @@ function handleGet  (entries) {
             res.send(200, result);
         });
     };
-};
+}
 
 exports = module.exports = function (entries) {
     return {
